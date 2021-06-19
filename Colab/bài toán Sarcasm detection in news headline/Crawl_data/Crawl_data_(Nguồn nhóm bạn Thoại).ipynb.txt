@@ -1,0 +1,465 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Crawl_data.ipynb",
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "i3lvk2mmJdc6"
+      },
+      "source": [
+        "# **Import một số thư viện cần thiết**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "obBF72peJGHM"
+      },
+      "source": [
+        "import requests\n",
+        "from bs4 import BeautifulSoup\n",
+        "import csv\n",
+        "import time"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "TKl3rixBJkuW"
+      },
+      "source": [
+        "# **Satirical News**\n",
+        "\n",
+        "\n",
+        "1.   Reductress\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Ns5YNvewJz7z"
+      },
+      "source": [
+        "# Crawl data theo catagory\n",
+        "# category : news\n",
+        "page_news = 1\n",
+        "result_1 = []\n",
+        "while (page_news <= 112):\n",
+        "    url = 'https://reductress.com/news/page/'+ str(page_news) +'/'\n",
+        "    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}\n",
+        "    r1 = requests.get(url, headers=headers)\n",
+        "    coverpage = r1.content\n",
+        "    soup1 = BeautifulSoup(coverpage, 'html5lib')\n",
+        "    coverpage = soup1.find_all('div', class_='box')\n",
+        "    for x in coverpage:\n",
+        "        headline = x.find('h1').get_text().strip()\n",
+        "        article_link = x.find('a')['href']\n",
+        "        is_sarcastic = 1\n",
+        "        result_1.append([headline,article_link,is_sarcastic])    \n",
+        "    page_news += 1\n",
+        "\n",
+        "time.sleep(5)\n",
+        "\n",
+        "# category : living\n",
+        "page_living = 1\n",
+        "result_2 = []\n",
+        "while (page_living <= 125):\n",
+        "    url = 'https://reductress.com/living/page/'+ str(page_living) +'/'\n",
+        "    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}\n",
+        "    r1 = requests.get(url, headers=headers)\n",
+        "    coverpage = r1.content\n",
+        "    soup1 = BeautifulSoup(coverpage, 'html5lib')\n",
+        "    coverpage = soup1.find_all('div', class_='box')\n",
+        "    for x in coverpage:\n",
+        "        headline = x.find('h1').get_text().strip()\n",
+        "        article_link = x.find('a')['href']\n",
+        "        is_sarcastic = 1\n",
+        "        result_2.append([headline,article_link,is_sarcastic])  \n",
+        "    page_living += 1\n",
+        "\n",
+        "time.sleep(5)\n",
+        "\n",
+        "# category : entertainment\n",
+        "page_entertainment = 1\n",
+        "result_3 = []\n",
+        "while (page_entertainment <= 20):\n",
+        "    url = 'https://reductress.com/entertainment/page/'+ str(page_entertainment) +'/'\n",
+        "    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}\n",
+        "    r1 = requests.get(url, headers=headers)\n",
+        "    coverpage = r1.content\n",
+        "    soup1 = BeautifulSoup(coverpage, 'html5lib')\n",
+        "    coverpage = soup1.find_all('div', class_='box')\n",
+        "    for x in coverpage:\n",
+        "        headline = x.find('h1').get_text().strip()\n",
+        "        article_link = x.find('a')['href']\n",
+        "        is_sarcastic = 1\n",
+        "        result_3.append([headline,article_link,is_sarcastic])  \n",
+        "    page_entertainment += 1\n",
+        "\n",
+        "time.sleep(5)\n",
+        "\n",
+        "# category : love&sex\n",
+        "page_lovevsex = 1\n",
+        "result_4 = []\n",
+        "while (page_lovevsex <= 62):\n",
+        "    url = 'https://reductress.com/love-sex/page/'+ str(page_lovevsex) +'/'\n",
+        "    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}\n",
+        "    r1 = requests.get(url, headers=headers)\n",
+        "    coverpage = r1.content\n",
+        "    soup1 = BeautifulSoup(coverpage, 'html5lib')\n",
+        "    coverpage = soup1.find_all('div', class_='box')\n",
+        "    for x in coverpage:\n",
+        "        headline = x.find('h1').get_text().strip()\n",
+        "        article_link = x.find('a')['href']\n",
+        "        is_sarcastic = 1\n",
+        "        result_4.append([headline,article_link,is_sarcastic])  \n",
+        "    page_lovevsex += 1\n",
+        "\n",
+        "time.sleep(5)\n",
+        "\n",
+        "# category : womanspiration\n",
+        "page_womanspiration = 1\n",
+        "result_5 = []\n",
+        "while (page_womanspiration <= 45):\n",
+        "    url = 'https://reductress.com/womanspiration/page/'+ str(page_womanspiration) +'/'\n",
+        "    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}\n",
+        "    r1 = requests.get(url, headers=headers)\n",
+        "    coverpage = r1.content\n",
+        "    soup1 = BeautifulSoup(coverpage, 'html5lib')\n",
+        "    coverpage = soup1.find_all('div', class_='box')\n",
+        "    for x in coverpage:\n",
+        "        headline = x.find('h1').get_text().strip()\n",
+        "        article_link = x.find('a')['href']\n",
+        "        is_sarcastic = 1\n",
+        "        result_5.append([headline,article_link,is_sarcastic])  \n",
+        "    page_womanspiration += 1\n",
+        "\n",
+        "time.sleep(5)\n",
+        "\n",
+        "# category : print-edition\n",
+        "page_printe = 1\n",
+        "result_6 = []\n",
+        "while (page_printe <= 150):\n",
+        "    url = 'https://reductress.com/print-edition/page/'+ str(page_printe) +'/'\n",
+        "    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}\n",
+        "    r1 = requests.get(url, headers=headers)\n",
+        "    coverpage = r1.content\n",
+        "    soup1 = BeautifulSoup(coverpage, 'html5lib')\n",
+        "    coverpage = soup1.find_all('div', class_='box')\n",
+        "    for x in coverpage:\n",
+        "        headline = x.find('h1').get_text().strip()\n",
+        "        article_link = x.find('a')['href']\n",
+        "        is_sarcastic = 1\n",
+        "        result_6.append([headline,article_link,is_sarcastic])  \n",
+        "    page_printe += 1\n",
+        "\n",
+        "time.sleep(5)\n",
+        "\n",
+        "# category : thoughts\n",
+        "page_thoughts = 1\n",
+        "result_7 = []\n",
+        "while (page_thoughts <= 74):\n",
+        "    url = 'https://reductress.com/thoughts/page/'+ str(page_thoughts) +'/'\n",
+        "    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}\n",
+        "    r1 = requests.get(url, headers=headers)\n",
+        "    coverpage = r1.content\n",
+        "    soup1 = BeautifulSoup(coverpage, 'html5lib')\n",
+        "    coverpage = soup1.find_all('div', class_='box')\n",
+        "    for x in coverpage:\n",
+        "        headline = x.find('h1').get_text().strip()\n",
+        "        article_link = x.find('a')['href']\n",
+        "        is_sarcastic = 1\n",
+        "        result_7.append([headline,article_link,is_sarcastic])  \n",
+        "    page_thoughts += 1\n",
+        "\n",
+        "time.sleep(5)\n",
+        "\n",
+        "# category : style\n",
+        "page_style = 1\n",
+        "result_8 = []\n",
+        "while (page_style <= 74):\n",
+        "    url = 'https://reductress.com/style/page/'+ str(page_style) +'/'\n",
+        "    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}\n",
+        "    r1 = requests.get(url, headers=headers)\n",
+        "    coverpage = r1.content\n",
+        "    soup1 = BeautifulSoup(coverpage, 'html5lib')\n",
+        "    coverpage = soup1.find_all('div', class_='box')\n",
+        "    for x in coverpage:\n",
+        "        headline = x.find('h1').get_text().strip()\n",
+        "        article_link = x.find('a')['href']\n",
+        "        is_sarcastic = 1\n",
+        "        result_8.append([headline,article_link,is_sarcastic])  \n",
+        "    page_style += 1\n",
+        "\n",
+        "time.sleep(5)\n",
+        "\n",
+        "\n",
+        "with open('reductress.csv', 'w', encoding='UTF8', newline='') as file_output:\n",
+        "    headers = ['headline','article_link','is_sarcastic']\n",
+        "    writer = csv.DictWriter(file_output,delimiter = ',',lineterminator='\\n',fieldnames=headers)\n",
+        "    writer.writeheader()\n",
+        "    for i in result_1:\n",
+        "        writer.writerow({headers[0]:i[0],headers[1]:i[1],headers[2]:i[2]})\n",
+        "    for i in result_2:\n",
+        "        writer.writerow({headers[0]:i[0],headers[1]:i[1],headers[2]:i[2]})\n",
+        "    for i in result_3:\n",
+        "        writer.writerow({headers[0]:i[0],headers[1]:i[1],headers[2]:i[2]})\n",
+        "    for i in result_4:\n",
+        "        writer.writerow({headers[0]:i[0],headers[1]:i[1],headers[2]:i[2]})\n",
+        "    for i in result_5:\n",
+        "        writer.writerow({headers[0]:i[0],headers[1]:i[1],headers[2]:i[2]})\n",
+        "    for i in result_6:\n",
+        "        writer.writerow({headers[0]:i[0],headers[1]:i[1],headers[2]:i[2]})\n",
+        "    for i in result_7:\n",
+        "        writer.writerow({headers[0]:i[0],headers[1]:i[1],headers[2]:i[2]})\n",
+        "    for i in result_8:\n",
+        "        writer.writerow({headers[0]:i[0],headers[1]:i[1],headers[2]:i[2]})"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QN0tufhqMZki"
+      },
+      "source": [
+        "2. Newsthump"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "hb23VfPdL_uR"
+      },
+      "source": [
+        "page_news = 1\n",
+        "result_1 = []\n",
+        "while (page_news <= 294):\n",
+        "    url = 'https://newsthump.com/category/world/page/'+ str(page_news) +'/'\n",
+        "    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}\n",
+        "    r1 = requests.get(url, headers=headers)\n",
+        "    coverpage = r1.content\n",
+        "    soup1 = BeautifulSoup(coverpage, 'html5lib')\n",
+        "    coverpage = soup1.find_all('h2', class_='post-title')\n",
+        "    for x in coverpage:\n",
+        "        headline = x.get_text().strip()\n",
+        "        article_link = x.find('a')['href']\n",
+        "        is_sarcastic = 1\n",
+        "        result_1.append([headline,article_link,is_sarcastic])    \n",
+        "    page_news += 1\n",
+        "\n",
+        "with open('newsthump.csv', 'w', encoding='UTF8', newline='') as file_output:\n",
+        "    headers = ['headline','article_link','is_sarcastic']\n",
+        "    writer = csv.DictWriter(file_output,delimiter = ',',lineterminator='\\n',fieldnames=headers)\n",
+        "    writer.writeheader()\n",
+        "    for i in result_1:\n",
+        "        writer.writerow({headers[0]:i[0],headers[1]:i[1],headers[2]:i[2]})"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "mh7D7xPAKYLp"
+      },
+      "source": [
+        "3. Clickhole"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "pK7M93xbKqYf"
+      },
+      "source": [
+        "page_news = 1\n",
+        "result_1 = []\n",
+        "while (page_news <= 1176):\n",
+        "    url = 'https://clickhole.com/page/'+str(page_news)+'/'\n",
+        "    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}\n",
+        "    r1 = requests.get(url, headers=headers)\n",
+        "    coverpage = r1.content\n",
+        "    soup1 = BeautifulSoup(coverpage, 'html5lib')\n",
+        "    coverpage = soup1.find_all('h2', class_='post-title')\n",
+        "    for x in coverpage:\n",
+        "        headline = x.get_text().strip()\n",
+        "        article_link = x.find('a')['href']\n",
+        "        is_sarcastic = 1\n",
+        "        result_1.append([headline,article_link,is_sarcastic])    \n",
+        "    page_news += 1\n",
+        "\n",
+        "with open('clickhole.csv', 'w', encoding='UTF8', newline='') as file_output:\n",
+        "    headers = ['headline','article_link','is_sarcastic']\n",
+        "    writer = csv.DictWriter(file_output,delimiter = ',',lineterminator='\\n',fieldnames=headers)\n",
+        "    writer.writeheader()\n",
+        "    for i in result_1:\n",
+        "        writer.writerow({headers[0]:i[0],headers[1]:i[1],headers[2]:i[2]})"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "dPVMLU6uKtDO"
+      },
+      "source": [
+        "# **Trusted News Site**"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "9Bv1vbUqNo2a"
+      },
+      "source": [
+        "1. Newsweek"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "T6fuKrAlNq4S"
+      },
+      "source": [
+        "page_news = 1\n",
+        "result_1 = []\n",
+        "while (page_news <= 460):\n",
+        "    url = 'https://www.newsweek.com/world?page='+str(page_news)\n",
+        "    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}\n",
+        "    r1 = requests.get(url, headers=headers)\n",
+        "    coverpage = r1.content\n",
+        "    soup1 = BeautifulSoup(coverpage, 'html5lib')\n",
+        "    coverpage = soup1.find_all('h3')\n",
+        "    for x in coverpage:\n",
+        "        headline = x.get_text().strip()\n",
+        "        article_link = 'https://www.newsweek.com/' + x.find('a')['href']\n",
+        "        is_sarcastic = 0\n",
+        "        result_1.append([headline,article_link,is_sarcastic])    \n",
+        "    page_news += 1\n",
+        "\n",
+        "with open('newsweek.csv', 'w', encoding='UTF8', newline='') as file_output:\n",
+        "    headers = ['headline','article_link','is_sarcastic']\n",
+        "    writer = csv.DictWriter(file_output,delimiter = ',',lineterminator='\\n',fieldnames=headers)\n",
+        "    writer.writeheader()\n",
+        "    for i in result_1:\n",
+        "        writer.writerow({headers[0]:i[0],headers[1]:i[1],headers[2]:i[2]})"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "h26qCfl_KLuQ"
+      },
+      "source": [
+        "2. Breitbart\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "lWiyFbhGKCHc"
+      },
+      "source": [
+        "page_news = 1\n",
+        "result_1 = []\n",
+        "while (page_news <= 290):\n",
+        "    url = 'https://www.breitbart.com/world-news/page/'+str(page_news)+'/'\n",
+        "    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}\n",
+        "    r1 = requests.get(url, headers=headers)\n",
+        "    coverpage = r1.content\n",
+        "    soup1 = BeautifulSoup(coverpage, 'html5lib')\n",
+        "    coverpage = soup1.find_all('div', class_='tC')\n",
+        "    for x in coverpage:\n",
+        "        headline = x.find('a').get_text().strip()\n",
+        "        article_link = 'https://www.breitbart.com' + x.find('a')['href']\n",
+        "        is_sarcastic = 0\n",
+        "        result_1.append([headline,article_link,is_sarcastic])    \n",
+        "    page_news += 1\n",
+        "\n",
+        "with open('breitbart.csv', 'w', encoding='UTF8', newline='') as file_output:\n",
+        "    headers = ['headline','article_link','is_sarcastic']\n",
+        "    writer = csv.DictWriter(file_output,delimiter = ',',lineterminator='\\n',fieldnames=headers)\n",
+        "    writer.writeheader()\n",
+        "    for i in result_1:\n",
+        "        writer.writerow({headers[0]:i[0],headers[1]:i[1],headers[2]:i[2]})"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "GKo4v5-kNxER"
+      },
+      "source": [
+        "3. Time"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "qBcJ4Tg9NuN0"
+      },
+      "source": [
+        "page_news = 1\n",
+        "result_1 = []\n",
+        "while (page_news <= 2):\n",
+        "    url = 'https://time.com/section/world/?page=' + str(page_news)\n",
+        "    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}\n",
+        "    r1 = requests.get(url, headers=headers)\n",
+        "    coverpage = r1.content\n",
+        "    soup1 = BeautifulSoup(coverpage, 'html5lib')\n",
+        "    coverpage = soup1.find_all('h3', class_='headline heading-3 heading-content-small padding-4-top margin-8-bottom media-heading')\n",
+        "    for x in coverpage:\n",
+        "        headline = x.get_text().strip()\n",
+        "        article_link = x.find('a')['href']\n",
+        "        is_sarcastic = 0\n",
+        "        result_1.append([headline,article_link,is_sarcastic])    \n",
+        "    page_news += 1\n",
+        "\n",
+        "with open('time.csv', 'w', encoding='UTF8', newline='') as file_output:\n",
+        "    headers = ['headline','article_link','is_sarcastic']\n",
+        "    writer = csv.DictWriter(file_output,delimiter = ',',lineterminator='\\n',fieldnames=headers)\n",
+        "    writer.writeheader()\n",
+        "    for i in result_1:\n",
+        "        writer.writerow({headers[0]:i[0],headers[1]:i[1],headers[2]:i[2]})"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "hl_JBX1fPXSw"
+      },
+      "source": [
+        "# **Nhận xét**\n",
+        "\n",
+        "1. Tổng số lượng data crawl được từ tất cả các trang kể trang vảo khoảng trên 60000 bài, mỗi bên 30000.\n",
+        "2. Do số lượng bài báo trào phúng thấp hơn rất nhiều so với các tin tức chính thống, nên mỗi trang chúng em chỉ thu thập khoảng 10000 bài, giữ sự chênh lệch số lượng bài báo giữa 2 thể loại ở mức thấp (chêch lệch vào khoảng 100 đến 200 bài), giúp cho việc training trở nên không quá thiên về 1 phía."
+      ]
+    }
+  ]
+}
