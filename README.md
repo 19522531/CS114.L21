@@ -34,3 +34,5 @@
 | 1      | 19522531      | Hoàng Xuân Vũ          |[19522531](https://github.com/19522531)                  |19522531@gm.uit.edu.vn   |
 | 2      | 19521536      | Nguyễn Đạt Huy Hoàng   |[nguyendathuyhoang](https://github.com/nguyendathuyhoang)|19521536@gm.uit.edu.vn   |
 | 3      | 19522154      | Nguyễn Văn Tài         |[nguyentai090301](https://github.com/nguyentai090301)    |19522154@gm.uit.edu.vn   |
+## ĐỒ ÁN CUỐI KỲ
+- PHÁT HIỆN NGƯỜI KHÔNG MANG KHẨU TRANG, MANG KHÔNG ĐÚNG CÁCH TẠI NƠI CÔNG CỘNG
