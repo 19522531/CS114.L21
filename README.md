@@ -35,4 +35,4 @@
 | 2      | 19521536      | Nguyễn Đạt Huy Hoàng   |[nguyendathuyhoang](https://github.com/nguyendathuyhoang)|19521536@gm.uit.edu.vn   |
 | 3      | 19522154      | Nguyễn Văn Tài         |[nguyentai090301](https://github.com/nguyentai090301)    |19522154@gm.uit.edu.vn   |
 ## ĐỒ ÁN CUỐI KỲ
-- PHÁT HIỆN NGƯỜI KHÔNG MANG KHẨU TRANG, MANG KHÔNG ĐÚNG CÁCH TẠI NƠI CÔNG CỘNG
+- NHẬN DIỆN ĐEO KHẨU TRANG ĐÚNG CÁCH
