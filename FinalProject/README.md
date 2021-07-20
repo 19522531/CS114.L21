@@ -7,3 +7,16 @@
 <!-- Title -->
 <h1 align="center"><b>ĐỒ ÁN CUỐI KỲ</b></h1>
 <h1 align="center"><b>TÊN ĐỒ ÁN: NHẬN DIỆN ĐEO KHẨU TRANG ĐÚNG CÁCH</b></h1>
+
+## **Lớp:** CS114.L21
+
+## Nhóm thực hiện: 
+|   Họ và tên  |  MSSV      |
+|  :---------: |  :-------: |    
+|Hoàng Xuân Vũ | 19522531   |
+|Nguyễn Văn Tài| 19522154|
+|Nguyễn Đạt Huy Hoàng|19521536|
+
+## GVHD
+* **TS. Lê Đình Duy**
+* **ThS. Phạm Nguyễn Trường An**
